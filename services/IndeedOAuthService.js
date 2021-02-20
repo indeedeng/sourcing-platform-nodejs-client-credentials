@@ -21,7 +21,8 @@ class IndeedOAuthService {
                 employer: this.config.employer
             });
         } catch (err) {
-            console.dir(err.response.data, {depth: null});
+            console.dir(err, {depth: null});
+            throw err;
         }
     }
 

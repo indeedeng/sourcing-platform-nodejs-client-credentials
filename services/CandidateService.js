@@ -26,6 +26,7 @@ class CandidateService {
             return results.data;
         } catch (err) {
             console.dir(err.response.data, {depth: null});
+            throw err;
         }
     }
 }
