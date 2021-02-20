@@ -1,0 +1,51 @@
+<form>
+    <div class="row">
+        <div class="col">
+            <input name="city" type="text" class="form-control" 
+                placeholder="Search city" aria-label="Search city" value="{{city}}">
+        </div>
+        <div class="col">
+            <input id="keywords" name="keywords" type="text" class="form-control" 
+                placeholder="Search keywords" aria-label="Search keywords" value="{{keywords}}">
+        </div>
+        <div class="col">
+            <input type="submit" class="btn btn-primary" value="Search" />
+        </div>
+    </div>
+</form>
+
+{{#unless results.data.matches}}
+    <div class="alert alert-primary mt-3" role="alert">
+    <p>
+        Enter keywords to find candidates.
+    </p>
+    </div>
+{{else}}
+    <div class="mt-3">
+        {{results.pagination.total}} candidates found
+    </div>
+    {{#each results.data.matches}}
+    <div class="card w-75 mt-3">
+        <div class="card-body">
+            <h5 class="card-title">
+                Job Seeker {{this.jobSeekerId}}
+            </h5>
+            <p class="card-text">
+                {{this.resumeSummary.location.city}}, {{this.resumeSummary.location.country}}
+                <p>
+                    {{this.resumeSummary.workExperience.0.title}}
+                    at {{this.resumeSummary.workExperience.0.company}}
+                </p>
+                <p>
+                    Last updated {{this.resumeSummary.lastUpdatedTime}}
+                </p>
+            </p>
+            <a href="{{this.viewResumeUrls.onIndeed}}" target="_new" class="btn btn-secondary">View Resume</a>
+        </div>
+    </div>
+    {{/each}}
+    <div class="mt-3">
+        page {{results.pagination.page}} of {{results.pagination.pages}} 
+    </div>
+{{/unless}}
+
