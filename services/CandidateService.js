@@ -11,6 +11,7 @@ class CandidateService {
             let results = await axios.post(
                 this.config.resumeSearchURI, 
                 {
+                    employerId: this.config.employer,
                     searchArea: {
                         country: 'US',
                         freeformLocation: city,

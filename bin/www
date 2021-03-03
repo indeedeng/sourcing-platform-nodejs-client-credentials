@@ -5,7 +5,7 @@
  */
 
 var app = require('../app');
-var debug = require('debug')('find-talent:server');
+var debug = require('debug')('resume-sourcing-nodejs-client-credentials:server');
 var http = require('http');
 
 /**
